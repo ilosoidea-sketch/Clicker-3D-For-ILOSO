@@ -19,19 +19,19 @@ export function calculatePrice(currentLayout, len) {
 }
 
 export function sendWhatsAppOrder(currentLayout, nameInputVal, curBase, curTop, curFont, curCharm, totalValText) {
-  const text = nameInputVal.trim() || "ILOSO";
+  const text = nameInputVal.trim() || (currentLayout === "grid" ? "LOVE" : "ILOSO");
   const layoutStr = currentLayout === "grid" ? "Kotak 2x2 (Grid 4 Tombol)" : "Baris Vertikal";
 
   const msg = 
-    `Halo kak, saya ingin pesan *Keychain Klicker 3D Custom*:%0A%0A` +
-    `📐 *Model Casing:* ${layoutStr}%0A` +
-    `📝 *Teks / Simbol:* *${text.toUpperCase()}*%0A` +
-    `🎨 *Warna Base:* ${curBase.name}%0A` +
-    `🔘 *Warna Tombol (Top):* ${curTop.name}%0A` +
-    `✍️ *Warna Tulisan:* ${curFont.name}%0A` +
-    `✨ *Charm / Bunga Tambahan:* ${curCharm.name} (Free)%0A%0A` +
-    `💰 *Total Biaya: ${totalValText}*%0A%0A` +
+    `Halo kak, saya ingin pesan *Keychain Klicker 3D Custom*:\n\n` +
+    `📐 *Model Casing:* ${layoutStr}\n` +
+    `📝 *Teks / Simbol:* *${text.toUpperCase()}*\n` +
+    `🎨 *Warna Base:* ${curBase.name}\n` +
+    `🔘 *Warna Tombol (Top):* ${curTop.name}\n` +
+    `✍️ *Warna Tulisan:* ${curFont.name}\n` +
+    `✨ *Charm / Bunga Tambahan:* ${curCharm.name} (Free)\n\n` +
+    `💰 *Total Biaya: ${totalValText}*\n\n` +
     `Mohon konfirmasi ketersediaan stok & metode pembayaran ya kak. Terima kasih!`;
 
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
 }
