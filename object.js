@@ -76,6 +76,7 @@ export function initObjectStudio() {
       caseW = 72; caseH = (count * 60) + 20;
     }
 
+    // Mengatur ukuran bodi balok 3D secara presisi
     casingBlock.style.width = caseW + "px";
     casingBlock.style.height = caseH + "px";
 
@@ -85,8 +86,9 @@ export function initObjectStudio() {
     const wallLeft = document.getElementById("wallLeft");
     const wallRight = document.getElementById("wallRight");
 
+    // Menyamakan warna dasar keenam sisi kubus agar menyatu padat
     [caseFront, caseBack, wallTop, wallBottom, wallLeft, wallRight].forEach(el => {
-      el.style.backgroundColor = curBase.hex;
+      if (el) el.style.backgroundColor = curBase.hex;
     });
 
     caseFront.innerHTML = "";
@@ -113,10 +115,17 @@ export function initObjectStudio() {
       keycapWrapper.appendChild(skirtR);
       keycapWrapper.appendChild(topFace);
 
+      // MEMPERBAIKI ANIMASI KLIK TOMBOL (TERTEKAN KE DALAM)
       keycapWrapper.addEventListener("click", () => {
         playClickSound();
-        topFace.style.transform = "translateZ(4px)";
-        setTimeout(() => { topFace.style.transform = "translateZ(10px)"; }, 90);
+        // Bergeser ke dalam (translateZ lebih kecil) saat ditekan
+        topFace.style.transform = "translateZ(3px)";
+        keycapWrapper.style.transform = "translateZ(2px)";
+        
+        setTimeout(() => {
+          topFace.style.transform = "translateZ(10px)";
+          keycapWrapper.style.transform = "translateZ(8px)";
+        }, 120);
       });
 
       caseFront.appendChild(keycapWrapper);
@@ -190,6 +199,7 @@ export function initObjectStudio() {
 
   function renderPalettes(containerId, list, activeItem, onSelect) {
     const el = document.getElementById(containerId);
+    if (!el) return;
     el.innerHTML = "";
     list.forEach(item => {
       const d = document.createElement("div");
@@ -211,10 +221,13 @@ export function initObjectStudio() {
   renderPalettes("topSwatches", TOP_COLORS, curTop, item => { curTop = item; update3D(); });
   renderPalettes("fontSwatches", FONT_COLORS, curFont, item => { curFont = item; update3D(); });
 
-  document.getElementById("orderWAFun").addEventListener("click", () => {
-    const totalValText = document.getElementById("priceTotalVal").textContent;
-    sendWhatsAppOrder(currentLayout, nameInput.value, curBase, curTop, curFont, curCharm, totalValText);
-  });
+  const orderBtn = document.getElementById("orderWAFun");
+  if (orderBtn) {
+    orderBtn.addEventListener("click", () => {
+      const totalValText = document.getElementById("priceTotalVal").textContent;
+      sendWhatsAppOrder(currentLayout, nameInput.value, curBase, curTop, curFont, curCharm, totalValText);
+    });
+  }
 
   update3D();
 }
