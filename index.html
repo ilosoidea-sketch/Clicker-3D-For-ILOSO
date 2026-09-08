@@ -73,6 +73,7 @@
       font-weight: 700;
     }
 
+    /* Viewport 3D Proporsional */
     .viewport-3d {
       position: relative;
       width: 100%;
@@ -116,20 +117,20 @@
 
     .studio-shadow {
       position: absolute;
-      bottom: 10px;
-      width: 190px;
-      height: 24px;
+      bottom: 15px;
+      width: 160px;
+      height: 20px;
       border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
-      filter: blur(8px);
+      background: radial-gradient(ellipse, rgba(0, 0, 0, 0.85) 0%, transparent 70%);
+      filter: blur(6px);
       pointer-events: none;
-      transform: translateZ(-50px);
     }
 
+    /* Root 3D */
     .keychain-root-3d {
       position: relative;
       transform-style: preserve-3d;
-      transform: rotateX(20deg) rotateY(-30deg);
+      transform: rotateX(15deg) rotateY(-25deg);
       transition: transform 0.05s ease-out;
       cursor: grab;
       display: flex;
@@ -144,42 +145,42 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: -10px;
+      margin-bottom: -6px;
       z-index: 10;
-      transform: translateZ(12px);
+      transform: translateZ(16px);
     }
 
     .metal-ring {
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      border: 7px solid #cbd5e1;
+      border: 6px solid #cbd5e1;
       background: radial-gradient(circle, transparent 35%, rgba(0,0,0,0.1) 100%);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.6), inset 0 2px 5px rgba(255,255,255,0.8), inset 0 -3px 5px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6), inset 0 2px 4px rgba(255,255,255,0.8);
       transform: rotateX(15deg);
       position: relative;
     }
 
     .chain-link {
-      width: 12px;
-      height: 18px;
-      border: 4px solid #94a3b8;
-      border-radius: 6px;
+      width: 10px;
+      height: 15px;
+      border: 3px solid #94a3b8;
+      border-radius: 5px;
       background: transparent;
-      margin-top: -6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.7);
+      margin-top: -4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
       position: relative;
       z-index: 9;
     }
 
     .attached-charm {
       position: absolute;
-      top: 10px;
-      right: -60px;
-      font-size: 50px;
+      top: 8px;
+      right: -50px;
+      font-size: 42px;
       line-height: 1;
       transform: translateZ(10px) rotate(15deg);
-      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.6));
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.6));
       animation: charmSwing 3s ease-in-out infinite alternate;
       transform-origin: top left;
       z-index: 15;
@@ -189,10 +190,10 @@
       100% { transform: translateZ(10px) rotate(25deg); }
     }
 
+    /* BODI BALOK 3D SOLID RAPI */
     .casing-block {
       position: relative;
       transform-style: preserve-3d;
-      margin-top: 5px;
     }
 
     .case-wall {
@@ -204,13 +205,13 @@
 
     .case-front {
       position: relative;
-      border-radius: 12px;
-      padding: 12px;
+      border-radius: 14px;
+      padding: 10px;
       display: flex;
-      gap: 10px;
+      gap: 8px;
       align-items: center;
       justify-content: center;
-      transform: translateZ(12px);
+      transform: translateZ(14px);
       box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -4px 6px rgba(0, 0, 0, 0.4);
       z-index: 2;
     }
@@ -218,58 +219,59 @@
     .case-front.layout-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-gap: 10px;
+      grid-gap: 8px;
     }
 
     .case-back {
       inset: 0;
-      border-radius: 12px;
-      transform: translateZ(-12px) rotateY(180deg);
-      filter: brightness(0.4);
+      border-radius: 14px;
+      transform: translateZ(-14px) rotateY(180deg);
+      filter: brightness(0.35);
       box-shadow: 0 15px 35px rgba(0,0,0,0.8);
     }
 
     .case-left {
-      top: 10px; bottom: 10px; left: 0;
-      width: 24px;
+      top: 0; bottom: 0; left: 0;
+      width: 28px;
       transform-origin: left center;
       transform: rotateY(-90deg);
-      filter: brightness(0.65);
+      filter: brightness(0.6);
     }
     .case-right {
-      top: 10px; bottom: 10px; right: 0;
-      width: 24px;
+      top: 0; bottom: 0; right: 0;
+      width: 28px;
       transform-origin: right center;
       transform: rotateY(90deg);
-      filter: brightness(0.85);
+      filter: brightness(0.8);
     }
 
     .case-top {
-      top: 0; left: 10px; right: 10px;
-      height: 24px;
+      top: 0; left: 0; right: 0;
+      height: 28px;
       transform-origin: top center;
       transform: rotateX(90deg);
-      filter: brightness(0.95);
+      filter: brightness(0.9);
     }
     .case-bottom {
-      bottom: 0; left: 10px; right: 10px;
-      height: 24px;
+      bottom: 0; left: 0; right: 0;
+      height: 28px;
       transform-origin: bottom center;
       transform: rotateX(-90deg);
-      filter: brightness(0.5);
+      filter: brightness(0.45);
     }
 
+    /* TOMBOL KEYCAP 3D TIMBUL */
     .keycap-assembly {
-      width: 54px;
-      height: 54px;
+      width: 50px;
+      height: 50px;
       position: relative;
       transform-style: preserve-3d;
       cursor: pointer;
       user-select: none;
       transition: transform 0.08s ease;
-      transform: translateZ(8px);
+      transform: translateZ(6px);
     }
-    .keycap-assembly:active { transform: translateZ(2px); }
+    .keycap-assembly:active { transform: translateZ(1px); }
 
     .keycap-wall {
       position: absolute;
@@ -278,24 +280,24 @@
     }
 
     .keycap-top {
-      inset: 4px;
+      inset: 3px;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 900;
-      transform: translateZ(12px);
+      transform: translateZ(10px);
       box-shadow: inset 0 2px 3px rgba(255,255,255,0.6), inset 0 -2px 3px rgba(0,0,0,0.3);
       filter: brightness(1.1);
       border: 1px solid rgba(255,255,255,0.3);
       z-index: 2;
     }
 
-    .keycap-skirt-front { bottom: 0; left: 0; right: 0; height: 12px; transform-origin: bottom; transform: rotateX(-20deg); filter: brightness(0.75); border-radius: 0 0 6px 6px; }
-    .keycap-skirt-back { top: 0; left: 0; right: 0; height: 12px; transform-origin: top; transform: rotateX(20deg); filter: brightness(0.6); border-radius: 6px 6px 0 0; }
-    .keycap-skirt-left { top: 0; bottom: 0; left: 0; width: 12px; transform-origin: left; transform: rotateY(20deg); filter: brightness(0.7); border-radius: 6px 0 0 6px; }
-    .keycap-skirt-right { top: 0; bottom: 0; right: 0; width: 12px; transform-origin: right; transform: rotateY(-20deg); filter: brightness(0.9); border-radius: 0 6px 6px 0; }
+    .keycap-skirt-front { bottom: 0; left: 0; right: 0; height: 10px; transform-origin: bottom; transform: rotateX(-20deg); filter: brightness(0.75); border-radius: 0 0 6px 6px; }
+    .keycap-skirt-back { top: 0; left: 0; right: 0; height: 10px; transform-origin: top; transform: rotateX(20deg); filter: brightness(0.6); border-radius: 6px 6px 0 0; }
+    .keycap-skirt-left { top: 0; bottom: 0; left: 0; width: 10px; transform-origin: left; transform: rotateY(20deg); filter: brightness(0.7); border-radius: 6px 0 0 6px; }
+    .keycap-skirt-right { top: 0; bottom: 0; right: 0; width: 10px; transform-origin: right; transform: rotateY(-20deg); filter: brightness(0.9); border-radius: 0 6px 6px 0; }
 
     .controls {
       padding: 20px;
@@ -656,7 +658,7 @@
     const keychainRoot = document.getElementById("keychainRoot");
     const viewportStage = document.getElementById("viewportStage");
 
-    let rotX = 15, rotY = -24;
+    let rotX = 15, rotY = -25;
     let isDragging = false, startX, startY;
 
     function handleStart(e) {
@@ -679,7 +681,7 @@
 
     function handleEnd() { isDragging = false; }
     function reset3DView() {
-      rotX = 15; rotY = -24;
+      rotX = 15; rotY = -25;
       keychainRoot.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
     }
 
@@ -722,10 +724,10 @@
 
       let caseW, caseH;
       if (currentLayout === "grid") {
-        caseW = 142; caseH = 142;
+        caseW = 130; caseH = 130;
       } else {
         const count = chars.length;
-        caseW = 78; caseH = (count * 64) + 24;
+        caseW = 72; caseH = (count * 60) + 20;
       }
 
       const casingBlock = document.getElementById("casingBlock");
@@ -768,8 +770,8 @@
 
         keycapWrapper.addEventListener("click", () => {
           playClickSound();
-          topFace.style.transform = "translateZ(5px)";
-          setTimeout(() => { topFace.style.transform = "translateZ(12px)"; }, 100);
+          topFace.style.transform = "translateZ(3px)";
+          setTimeout(() => { topFace.style.transform = "translateZ(10px)"; }, 100);
         });
 
         caseFront.appendChild(keycapWrapper);
