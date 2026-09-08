@@ -189,9 +189,11 @@
       100% { transform: translateZ(10px) rotate(25deg); }
     }
 
+    /* KUBUS 3D SOLID DENGAN KETEBALAN FISIK NYATA */
     .casing-block {
       position: relative;
       transform-style: preserve-3d;
+      transition: width 0.2s ease, height 0.2s ease;
     }
 
     .case-wall {
@@ -200,6 +202,7 @@
       pointer-events: none;
     }
 
+    /* Muka Depan (Tempat Kedudukan Tombol Keycap) */
     .case-front {
       position: relative;
       border-radius: 14px;
@@ -219,6 +222,7 @@
       grid-gap: 8px;
     }
 
+    /* Muka Belakang (Menutup Sisi Belakang Balok) */
     .case-back {
       inset: 0;
       border-radius: 14px;
@@ -227,6 +231,7 @@
       box-shadow: 0 15px 35px rgba(0,0,0,0.8);
     }
 
+    /* Dinding Samping Kiri & Kanan (Mengunci Volume Ketebalan 24px) */
     .case-left {
       top: 0; bottom: 0; left: 0;
       width: 24px;
@@ -242,6 +247,7 @@
       filter: brightness(0.8);
     }
 
+    /* Dinding Atas & Bawah (Menyatukan Sisi Atas dan Bawah Balok) */
     .case-top {
       top: 0; left: 0; right: 0;
       height: 24px;
@@ -257,6 +263,7 @@
       filter: brightness(0.45);
     }
 
+    /* TOMBOL KEYCAP 3D TIMBUL DENGAN ANIMASI KLIK */
     .keycap-assembly {
       width: 50px;
       height: 50px;
@@ -267,7 +274,9 @@
       transition: transform 0.08s ease;
       transform: translateZ(8px);
     }
-    .keycap-assembly:active { transform: translateZ(2px); }
+    .keycap-assembly:active { 
+      transform: translateZ(2px); 
+    }
 
     .keycap-wall {
       position: absolute;
@@ -287,6 +296,7 @@
       filter: brightness(1.1);
       border: 1px solid rgba(255,255,255,0.3);
       z-index: 2;
+      transition: transform 0.08s ease;
     }
 
     .keycap-skirt-front { bottom: 0; left: 0; right: 0; height: 10px; transform-origin: bottom; transform: rotateX(-20deg); filter: brightness(0.75); border-radius: 0 0 6px 6px; }
@@ -594,7 +604,6 @@
     </div>
   </div>
 
-  <!-- Memanggil modul utama JavaScript -->
   <script type="module" src="main.js"></script>
 </body>
 </html>
