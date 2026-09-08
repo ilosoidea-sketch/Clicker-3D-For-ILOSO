@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Keychain Klicker 3D Studio</title>
+  <title>Custom Keychain Klicker 3D ILOSO</title>
   <style>
     :root {
       --primary: #f97316;
@@ -502,27 +502,27 @@
           <div class="charm-card selected" onclick="selectCharm(null, 'Tanpa Charm', 0, this)">
             <span class="charm-icon">🚫</span>
             <span class="charm-name">Tanpa Charm</span>
-            <span class="charm-price">Rp 0</span>
+            <span class="charm-price">Free </span>
           </div>
           <div class="charm-card" onclick="selectCharm('🐰', 'My Melody', 7000, this)">
             <span class="charm-icon">🐰</span>
             <span class="charm-name">My Melody</span>
-            <span class="charm-price">+Rp 7.000</span>
+            <span class="charm-price">+Free </span>
           </div>
           <div class="charm-card" onclick="selectCharm('🐱', 'Black Cat', 7000, this)">
             <span class="charm-icon">🐱</span>
             <span class="charm-name">Black Cat</span>
-            <span class="charm-price">+Rp 7.000</span>
+            <span class="charm-price">+Free </span>
           </div>
           <div class="charm-card" onclick="selectCharm('🐥', 'Cool Duck', 7000, this)">
             <span class="charm-icon">🐥</span>
             <span class="charm-name">Cool Duck</span>
-            <span class="charm-price">+Rp 7.000</span>
+            <span class="charm-price">+Free </span>
           </div>
           <div class="charm-card" onclick="selectCharm('🚀', 'Toy Story', 7000, this)">
             <span class="charm-icon">🚀</span>
             <span class="charm-name">Toy Story</span>
-            <span class="charm-price">+Rp 7.000</span>
+            <span class="charm-price">+Free </span>
           </div>
         </div>
       </div>
@@ -597,8 +597,8 @@
       { name: "Ungu", hex: "#8b5cf6" }
     ];
 
-    const WHATSAPP_NUMBER = "6281234567890"; // Ganti nomor WhatsApp Anda
-    const PRICE_PER_KEYS = { 1: 15000, 2: 20000, 3: 25000, 4: 30000, 5: 35000, 6: 40000 };
+    const WHATSAPP_NUMBER = "6285748977307"; // Ganti nomor WhatsApp Anda
+    const PRICE_PER_KEYS = { 1: 21500, 2: 24500, 3: 28500, 4: 32500, 5: 36500, 6: 40500 };
     const PRICE_GRID_4 = 32000;
 
     let currentLayout = "linear";
@@ -844,7 +844,7 @@
         desc = "Keychain Klicker Kotak 2x2 (4 Tombol):";
       } else {
         const l = Math.min(Math.max(len, 1), 6);
-        basePrice = PRICE_PER_KEYS[l] || 25000;
+        basePrice = PRICE_PER_KEYS[l] || 21500;
         desc = `Keychain Klicker Baris (${l} Huruf):`;
       }
 
@@ -932,7 +932,7 @@
     document.getElementById("nameInput").addEventListener("input", update3D);
 
     function orderWA() {
-      const text = document.getElementById("nameInput").value.trim() || "KAY";
+      const text = document.getElementById("nameInput").value.trim() || "ILOSO";
       const layoutStr = currentLayout === "grid" ? "Kotak 2x2 (Grid 4 Tombol)" : "Baris Vertikal";
       const totalStr = document.getElementById("priceTotalVal").textContent;
 
