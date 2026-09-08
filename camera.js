@@ -1,40 +1,35 @@
 export function initCamera() {
-  const keychainRoot = document.getElementById("keychainRoot");
-  const viewportStage = document.getElementById("viewportStage");
-  const resetBtn = document.getElementById("resetCamBtn");
-
-  let rotX = 15, rotY = -25;
-  let isDragging = false, startX, startY;
-
-  function handleStart(e) {
-    isDragging = true;
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    startX = clientX; startY = clientY;
+  const root = document.getElementById('keychainRoot');
+  const stage = document.getElementById('viewportStage');
+  const fit = document.getElementById('modelFit');
+  let rotX = -12, rotY = -22;
+  let drag = null;
+  const render = () => { root.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`; };
+  function resize() {
+    // Reserve room for ring, charm, perspective, hint and bottom controls.
+    const diagonal = Math.hypot(root.offsetWidth + 65, root.offsetHeight + 20);
+    const scale = Math.min(1.65, Math.max(0.25, (stage.clientHeight - 160) / diagonal), (stage.clientWidth - 90) / diagonal);
+    fit.style.setProperty('--model-scale', scale);
   }
-
-  function handleMove(e) {
-    if (!isDragging) return;
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    const dx = clientX - startX; const dy = clientY - startY;
-    rotY += dx * 0.55; rotX -= dy * 0.45;
-    rotX = Math.max(-75, Math.min(75, rotX));
-    keychainRoot.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-    startX = clientX; startY = clientY;
-  }
-
-  function handleEnd() { isDragging = false; }
-
-  viewportStage.addEventListener("mousedown", handleStart);
-  window.addEventListener("mousemove", handleMove);
-  window.addEventListener("mouseup", handleEnd);
-  viewportStage.addEventListener("touchstart", handleStart, { passive: true });
-  viewportStage.addEventListener("touchmove", handleMove, { passive: true });
-  viewportStage.addEventListener("touchend", handleEnd);
-
-  resetBtn.addEventListener("click", () => {
-    rotX = 15; rotY = -25;
-    keychainRoot.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+  stage.addEventListener('pointerdown', event => {
+    if (event.button !== 0 || !event.isPrimary || event.target.closest('button, input, a')) return;
+    drag = { id: event.pointerId, x: event.clientX, y: event.clientY };
+    stage.setPointerCapture(event.pointerId);
+    stage.style.cursor = 'grabbing';
   });
+  stage.addEventListener('pointermove', event => {
+    if (!drag || event.pointerId !== drag.id) return;
+    rotY = (rotY + (event.clientX - drag.x) * 0.5) % 360;
+    rotX = Math.max(-65, Math.min(65, rotX - (event.clientY - drag.y) * 0.4));
+    drag.x = event.clientX; drag.y = event.clientY;
+    render();
+  });
+  function end() { drag = null; stage.style.cursor = ''; }
+  stage.addEventListener('pointerup', end);
+  stage.addEventListener('pointercancel', end);
+  stage.addEventListener('lostpointercapture', end);
+  document.getElementById('resetCamBtn').addEventListener('click', () => { rotX = -12; rotY = -22; render(); });
+  const observer = new ResizeObserver(resize);
+  observer.observe(stage); observer.observe(root);
+  render(); resize();
 }
