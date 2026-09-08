@@ -53,20 +53,6 @@
       margin-top: 4px;
     }
 
-    .makerworld-info {
-      padding: 10px 16px;
-      background: rgba(15, 23, 42, 0.6);
-      border-bottom: 1px solid var(--border);
-      font-size: 11px;
-      color: var(--text-muted);
-      text-align: center;
-    }
-    .makerworld-info a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 700;
-    }
-
     .viewport-3d {
       position: relative;
       width: 100%;
@@ -462,7 +448,6 @@ body { padding: 28px 20px 48px; }
 .header { text-align: left; padding: 24px 28px; }
 .header h1 { font-size: clamp(22px, 3vw, 30px); letter-spacing: -.6px; }
 .header p { font-size: 16px; line-height: 1.5; color: #c1cbd9; }
-.makerworld-info { font-size: 12px; line-height: 1.5; }
 .studio-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: start; }
 .viewport-3d { height: 640px; position: sticky; top: 16px; perspective: 1100px; isolation: isolate; }
 .controls { border-left: 1px solid var(--border); padding: 24px; gap: 24px; min-width: 0; }
@@ -528,3 +513,23 @@ button { -webkit-tap-highlight-color: transparent; }
 }
 
 .extrusion-wall { position: absolute; display: block; transform-origin: center; backface-visibility: hidden; pointer-events: none; }
+
+/* V3: layouts and independent two-color assignment for keycaps and legends. */
+[hidden] { display: none !important; }
+.layout-switcher { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+.layout-btn { font-size: 14px; text-align: left; }
+.case-front.layout-positioned { display: block; padding: 0; background: transparent; box-shadow: none; border-radius: 0; }
+.layout-positioned > .keycap-assembly { position: absolute; }
+.front-plate { position: absolute; inset: 0; box-shadow: inset 0 2px 4px #ffffff60, inset 0 -4px 6px #0005; pointer-events: none; }
+.key-number { position: absolute; top: 3px; left: 5px; font-size: 10px; font-weight: 700; line-height: 1; color: inherit; }
+.editor-help { font-size: 14px; line-height: 1.6; color: #b8c6d8; margin-top: 10px; }
+.color-mode, .color-slots { display: flex; gap: 8px; margin: 10px 0 12px; }
+.color-mode button, .color-slots button { min-height: 44px; padding: 9px 12px; border: 1px solid #475569; border-radius: 10px; background: #101827; color: #e2e8f0; font-size: 14px; cursor: pointer; }
+.color-slots button { flex: 1; border-bottom-width: 5px; line-height: 1.5; }
+.color-mode button[aria-pressed="true"], .color-slots button[aria-pressed="true"] { outline: 2px solid #fb923c; outline-offset: 1px; }
+.assignment-editor { padding: 2px 12px 12px; margin-top: 16px; border: 1px solid #475569; border-radius: 12px; background: #141e2d; }
+.number-map { display: grid; gap: 8px; margin: 12px 0; }
+.number-cell { min-width: 0; min-height: 46px; padding: 6px; border: 1px solid #475569; border-top: 6px solid; border-radius: 8px; background: #243248; color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; }
+.number-cell[aria-pressed="true"] { background: #3a2946; outline: 1px solid #bd86db; }
+.color-summary { font-size: 14px; line-height: 1.7; color: #d0dbe9; }
+@media (max-width: 380px) { .layout-switcher { grid-template-columns: 1fr; } .color-slots { flex-wrap: wrap; } }
