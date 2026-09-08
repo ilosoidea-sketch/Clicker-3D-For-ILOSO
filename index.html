@@ -14,11 +14,7 @@
       <h1>ILOSO 3D Klicker Studio</h1>
       <p>Buat kombinasi kamu. Putar, tekan, dan dengarkan.</p>
     </div>
-    <div class="makerworld-info">
-      Model Basis: <a href="https://makerworld.com/en/models/2513119-fidget-clicker-15-combos-satisfying-clicks#profileId-2764195" target="_blank" rel="noopener noreferrer">MakerWorld Fidget Clicker</a>
-    </div>
-
-    <main class="studio-layout">
+<main class="studio-layout">
     <div class="viewport-3d" id="viewportStage">
       <div class="view-hint">Geser untuk putar 360° · Tekan tombol untuk klik</div>
       <button class="reset-cam-btn" id="resetCamBtn">🔄 Reset Sudut</button>
@@ -50,10 +46,8 @@
     <div class="controls">
       <div>
         <div class="section-title"><span><span class="badge">Model</span>Bentuk Casing Klicker</span></div>
-        <div class="layout-switcher">
-          <button type="button" class="layout-btn active" id="btnLinear" aria-pressed="true">📏 Baris Vertikal (1–6)</button>
-          <button type="button" class="layout-btn" id="btnGrid" aria-pressed="false">🔲 Kotak 2×2 (4 Tombol)</button>
-        </div>
+        <div class="layout-switcher" id="layoutSwitcher" aria-label="Pilih bentuk casing"></div>
+        <p class="editor-help" id="layoutInfo">Baris vertikal, 1–6 tombol.</p>
       </div>
 
       <div>
@@ -78,12 +72,38 @@
 
       <div>
         <div class="section-title"><span><span class="badge">Step 2</span>Warna Tombol (Top Keycap)</span><span id="labelTop" style="color: var(--primary);">Putih</span></div>
+        <div class="color-mode" role="group" aria-label="Jumlah warna tombol">
+          <button type="button" id="topSingle" aria-pressed="true">1 warna</button>
+          <button type="button" id="topDual" aria-pressed="false">2 warna</button>
+        </div>
+        <div class="color-slots">
+          <button type="button" id="topSlotA" aria-pressed="true">Warna A</button>
+          <button type="button" id="topSlotB" aria-pressed="false" hidden>Warna B</button>
+        </div>
         <div class="swatches-grid" id="topSwatches"></div>
+        <div id="topAssignment" class="assignment-editor" hidden>
+          <p class="editor-help">Klik nomor kotak untuk mengganti warna A ↔ B. Urutan dari kiri ke kanan, lalu baris berikutnya.</p>
+          <div class="number-map" id="topMap" aria-label="Pembagian warna per nomor kotak"></div>
+          <p class="color-summary" id="topSummary" aria-live="polite"></p>
+        </div>
       </div>
 
       <div>
         <div class="section-title"><span><span class="badge">Step 3</span>Warna Tulisan</span><span id="labelFont" style="color: var(--primary);">Merah</span></div>
+        <div class="color-mode" role="group" aria-label="Jumlah warna tulisan">
+          <button type="button" id="fontSingle" aria-pressed="true">1 warna</button>
+          <button type="button" id="fontDual" aria-pressed="false">2 warna</button>
+        </div>
+        <div class="color-slots">
+          <button type="button" id="fontSlotA" aria-pressed="true">Warna A</button>
+          <button type="button" id="fontSlotB" aria-pressed="false" hidden>Warna B</button>
+        </div>
         <div class="swatches-grid" id="fontSwatches"></div>
+        <div id="fontAssignment" class="assignment-editor" hidden>
+          <p class="editor-help">Klik nomor kotak untuk mengganti warna A ↔ B. Urutan dari kiri ke kanan, lalu baris berikutnya.</p>
+          <div class="number-map" id="fontMap" aria-label="Pembagian warna per nomor kotak"></div>
+          <p class="color-summary" id="fontSummary" aria-live="polite"></p>
+        </div>
       </div>
 
       <div>
